@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Soluções circulares e regenerativas — Projeto Têxtil</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --orange:#f0702a;
+      --muted:#6b7280;
+      --bg:#f7fafc;
+      --card:#ffffff;
+      --radius:14px;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      margin:0;
+      background:var(--bg);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    /* Container */
+    .wrap{max-width:var(--maxw);margin:28px auto;padding:20px;}
+
+    header{
+      background:linear-gradient(0deg,var(--orange),var(--orange));
+      color:white;
+      padding:18px;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    }
+    .header-top{display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+    .title{
+      font-weight:800;
+      font-size:20px;
+      letter-spacing:0.2px;
+      margin:0;
+    }
+    .subtitle{opacity:0.95;margin-top:6px;font-size:13px}
+
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;padding:8px 12px;border-radius:8px;display:inline-block}
+    nav a:hover{background:rgba(255,255,255,0.08)}
+
+    .hero{
+      margin-top:14px;
+      border-radius:10px;
+      overflow:hidden;
+      height:220px;
+      background-size:cover;
+      background-position:center;
+      display:block;
+    }
+
+    main{
+      display:grid;
+      grid-template-columns:1fr 340px;
+      gap:20px;
+      margin-top:20px;
+    }
+
+    /* Cards */
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:0 6px 18px rgba(12,17,25,0.06);
+    }
+    h2{margin:0 0 8px 0;font-size:18px}
+    h3{margin:0 0 10px 0;font-size:15px}
+    p{margin:0 0 10px 0;color:#1f2937;font-size:14px}
+    .muted{color:var(--muted);font-size:13px}
+
+    /* lists */
+    ol{padding-left:18px;margin:8px 0}
+    li{margin-bottom:6px;font-size:14px}
+
+    /* Authors */
+    .authors-list{display:flex;flex-direction:column;gap:10px}
+    .author{display:flex;align-items:center;gap:12px}
+    .avatar{
+      width:48px;height:48px;border-radius:50%;
+      background:#e6e9ef;color:#374151;display:flex;align-items:center;justify-content:center;font-weight:700;
+      font-size:18px;
+    }
+    .author-meta{font-size:13px}
+    .author-meta .name{font-weight:600}
+
+    /* Illustrations grid */
+    .figs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+    .fig{height:86px;border-radius:8px;background:#eef2f6;background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:8px;color:#fff;font-weight:600;text-shadow:0 1px 2px rgba(0,0,0,0.45)}
+    .fig small{font-weight:500;color:rgba(255,255,255,0.9);text-shadow:none;color:var(--muted)}
+
+    /* Footer */
+    footer{margin-top:22px;padding:14px;border-radius:10px;display:flex;justify-content:space-between;align-items:center;background:#fff;font-size:13px;box-shadow:0 6px 18px rgba(12,17,25,0.04)}
+
+    /* Responsive */
+    @media (max-width:980px){
+      main{grid-template-columns:1fr; padding-bottom:18px}
+      .hero{height:180px}
+      .header-top{gap:10px}
+    }
+
+    /* print-friendly tweaks: compact, full width */
+    @media print{
+      body{background:white;color:#000}
+      .wrap{max-width:1200px;margin:0;padding:0}
+      header{page-break-after:avoid}
+      footer{display:none}
+      nav, button, .download-links{display:none}
+      main{grid-template-columns:1fr;gap:8px}
+      .card{box-shadow:none;border-radius:0;padding:8px}
+      .hero{display:none}
+    }
+
+    /* small helpers */
+    .muted-box{background:#fff8f0;border:1px solid rgba(240,112,42,0.06);padding:10px;border-radius:8px}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:600}
+    .btn-primary{background:var(--orange);color:white}
+    .btn-outline{border:1px solid #e6e9ef;background:white;color:#334155}
+
+    .download-links{display:flex;gap:8px;margin-top:10px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="header-top">
+        <div>
+          <h1 class="title">Soluções baseadas em princípios circulares e regenerativos aplicadas ao setor têxtil</h1>
+          <div class="subtitle">Projeto — Seminários em Engenharia Mecânica 2025/2026 — Universidade de Aveiro (DEM)</div>
+        </div>
+
+        <nav aria-label="Navegação do Poster">
+          <a href="#resumo">Resumo</a>
+          <a href="#metodologia">Metodologia</a>
+          <a href="#conclusoes">Conclusões</a>
+          <a href="#contact">Contacto</a>
+        </nav>
+      </div>
+
+      <!-- Hero image: substitui 'hero.jpg' pelo ficheiro real -->
+      <a href="#" class="hero" id="hero" style="background-image:url('hero.jpg');" title="Poster (substituir imagem)"></a>
+    </header>
+
+    <main>
+      <!-- Main column -->
+      <section>
+        <article id="resumo" class="card" role="article" aria-labelledby="resumo-title">
+          <h2 id="resumo-title">Resumo</h2>
+          <p>O setor têxtil é um dos mais poluentes e intensivos em recursos. Este projeto explora soluções baseadas em princípios circulares e regenerativos para reduzir consumo de água, emissões e produção de resíduos, promovendo reaproveitamento de materiais e recuperação de ecossistemas.</p>
+          <p class="muted">A página destina-se a avaliadores externos e docentes — deve permitir uma visão global do projeto sem leitura da proposta completa.</p>
+        </article>
+
+        <article id="enquadramento" class="card" style="margin-top:14px">
+          <h2>Enquadramento</h2>
+          <p>A abordagem parte do reconhecimento do elevado impacto ambiental do setor têxtil e do modelo linear "produzir-usar-descartar". Propõe-se integrar design for disassembly, reciclagem química de PET, biomateriais regenerativos e tecnologias de tingimento sustentáveis.</p>
+        </article>
+
+        <article id="metodologia" class="card" style="margin-top:14px">
+          <h2>Metodologia</h2>
+          <ol>
+            <li><strong>Revisão de literatura:</strong> análise de modelos circulares e regenerativos.</li>
+            <li><strong>Identificação de práticas:</strong> mapeamento de soluções ao longo do ciclo de vida.</li>
+            <li><strong>Avaliação de impactos:</strong> comparação de modelos lineares e circulares.</li>
+            <li><strong>Seleção de casos de estudo:</strong> exemplos industriais e tecnologias aplicáveis.</li>
+            <li><strong>Síntese e proposta:</strong> recomendações práticas e roadmap de implementação.</li>
+          </ol>
+        </article>
+
+        <article id="estado" class="card" style="margin-top:14px">
+          <h2>Estado da Arte</h2>
+          <p>Materiais derivados de micélio, algas, celulose bacteriana e polímeros biobaseados apresentam potencial para reduzir a pegada de carbono. Em tingimento, exista pesquisa para recuperar corantes e reduzir descarga de efluentes. A adoção passa por desafios de custo, durabilidade e logística de recolha.</p>
+        </article>
+
+        <article id="conclusoes" class="card" style="margin-top:14px">
+          <h2>Conclusões e Trabalhos Futuros</h2>
+          <p>A transição para modelos circulares exige inovação tecnológica, políticas públicas e colaboração entre atores da cadeia. Recomenda-se investimento em: reciclagem química de PET, desenvolvimento de biomateriais, digitalização para rastreabilidade e design orientado para desmontagem.</p>
+        </article>
+
+        <article id="cases" class="card" style="margin-top:14px">
+          <h2>Exemplo de Caso — Tingimento Sustentável</h2>
+          <p>O projeto Dvelop — Tecnologias Circulares para o Tingimento Têxtil desenvolveu um processo que permite recuperar corantes e reduzir consumo hídrico, com aplicação piloto em efluentes de pequenas indústrias têxteis.</p>
+        </article>
+      </section>
+
+      <!-- Right column -->
+      <aside>
+        <div class="card">
+          <h3>Autores</h3>
+          <div class="authors-list" role="list">
+            <div class="author" role="listitem">
+              <div class="avatar">D</div>
+              <div class="author-meta"><div class="name">David Tavares</div><div class="muted">N.º 107531</div></div>
+            </div>
+            <div class="author">
+              <div class="avatar">Di</div>
+              <div class="author-meta"><div class="name">Diogo Costa</div><div class="muted">N.º 108266</div></div>
+            </div>
+            <div class="author">
+              <div class="avatar">Du</div>
+              <div class="author-meta"><div class="name">Duarte Brito</div><div class="muted">N.º 108129</div></div>
+            </div>
+            <div class="author">
+              <div class="avatar">F</div>
+              <div class="author-meta"><div class="name">Filipe Santos</div><div class="muted">N.º 108054</div></div>
+            </div>
+            <div class="author">
+              <div class="avatar">G</div>
+              <div class="author-meta"><div class="name">Gonçalo Almeida</div><div class="muted">N.º 108432</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3>Ilustrações</h3>
+          <p class="muted">Substitui as imagens abaixo pelas figuras do poster (tecnologias, fotografias de efluentes, esquemas).</p>
+          <div class="figs" aria-hidden="true">
+            <div class="fig" style="background-image:url('figure1.jpg');">Legenda 1<br><small>Fonte: autores</small></div>
+            <div class="fig" style="background-image:url('figure2.jpg');">Legenda 2<br><small>Fonte: autores</small></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px">
+          <h3>Bibliografia selecionada</h3>
+          <ol>
+            <li>Recycling of polyester textile wastes — Green Chemistry, 2024.</li>
+            <li>Textile and food waste biodegradation — Cambridge University Press, 2023.</li>
+            <li>Economia circular na indústria têxtil — Relatório técnico, 2025.</li>
+          </ol>
+        </div>
+
+        <div id="contact" class="card" style="margin-top:14px">
+          <h3>Contacto</h3>
+          <p class="muted">Departamento de Engenharia Mecânica — Universidade de Aveiro</p>
+          <p style="margin-top:8px"><strong>Email de contacto:</strong><br><a href="mailto:projeto@ua.pt">projeto@ua.pt</a></p>
+
+          <div class="download-links" role="group" aria-label="Links de downloads">
+            <a class="btn btn-primary" href="#" onclick="window.print();return false" title="Imprimir versão de página">Versão para Impressão</a>
+            <a class="btn btn-outline" href="poster.pdf" download>Download do Poster (PDF)</a>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <div>© Universidade de Aveiro — DEM</div>
+      <div class="muted">Projecto orientado por docentes — base para sessão final</div>
+    </footer>
+  </div>
+
+  <script>
+    /* Pequeno script para navegação suave e fallback de imagem */
+    (function() {
+      // smooth scroll for anchors
+      document.querySelectorAll('a[href^="#"]').forEach(function(a){
+        a.addEventListener('click', function(e){
+          var href = this.getAttribute('href');
+          if(href.length>1){
+            e.preventDefault();
+            var el = document.querySelector(href);
+            if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+          }
+        });
+      });
+
+      // replace hero placeholder if image missing with embedded poster (optional)
+      var hero = document.getElementById('hero');
+      var testImg = new Image();
+      testImg.onload = function(){ /* ok */ };
+      testImg.onerror = function(){
+        // fallback: show a neutral SVG background and short caption
+        hero.style.backgroundImage = 'url(data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1200\" height=\"400\"><rect width=\"100%\" height=\"100%\" fill=\"#f3f4f6\"/><text x=\"50%\" y=\"50%\" font-family=\"Inter, Arial\" font-size=\"28\" text-anchor=\"middle\" fill=\"#9ca3af\">Substituir hero.jpg pela imagem do poster</text></svg>') + ')';
+      };
+      testImg.src = hero.style.backgroundImage.replace(/^url\(["']?|["']?\)$/g, '');
+    })();
+  </script>
+</body>
+</html>
