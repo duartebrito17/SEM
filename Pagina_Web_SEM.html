@@ -23,7 +23,55 @@
     nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
     nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px}
     .container{max-width:1100px;margin:24px auto;padding:0 18px}
+	
+	
+	/* Accordion visual & affordance */
+	.accordion-intro { font-size:13px; color:var(--muted); margin-bottom:8px; }
+	.accordion { display:block; gap:8px; }
+	.accordion .acc-card { background:var(--card); border-radius:8px; padding:0; border:1px solid rgba(0,0,0,0.04); overflow:hidden; }
+	.acc-btn {
+		width:100%;
+		display:flex;
+		align-items:center;
+		justify-content:space-between;
+		padding:14px 16px;
+		font-weight:700;
+		text-align:left;
+		background:transparent;
+		border:none;
+		cursor:pointer;                /* pointy hand */
+		color:var(--accent);          /* clickable color */
+		font-size:15px;
+	}
+	
+	.acc-btn:hover, .acc-btn:focus {
+		background: rgba(11,109,77,0.03);
+		outline: none;
+	}
 
+	.acc-btn .title { display:flex; gap:12px; align-items:center; }
+	.acc-btn .chev { transition: transform .22s ease; display:inline-block; }
+	.acc-btn[aria-expanded="true"] .chev { transform: rotate(90deg); } /* rotate when open */
+
+	.panel {
+		padding:12px 16px 18px 16px;
+		color:var(--muted);
+		line-height:1.45;
+	}
+
+	/* subtle affordance (underline) for title text */
+	.acc-btn .clickable-text { text-decoration: underline; text-decoration-thickness:1px; text-underline-offset:3px; }
+
+	/* small visual focus */
+	.acc-btn:focus-visible { box-shadow: 0 0 0 4px rgba(11,109,77,0.12); border-radius:8px; }
+
+	/* make the icon area separate for clarity on small screens */
+	.acc-btn svg { width:18px; height:18px; flex-shrink:0; }
+
+	/* optional: limit panel transitions (use max-height for smooth) */
+	.panel[hidden] { display:none; }
+	
+	
     /* Hero */
     .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:28px 0}
     .hero .card{background:var(--card);padding:28px;border-radius:12px;box-shadow:0 6px 20px rgba(11,109,77,0.06)}
@@ -108,7 +156,7 @@
 
       <aside class="card">
         <h3 style="margin-top:0">Resumo rápido</h3>
-        <p class="small">O projeto investiga como aplicar princípios de economia circular e regeneração ao setor têxtil, visando transformar o tradicional modelo linear “produzir-usar-descarte” num ciclo sustentável: do design à reciclagem. Propõe soluções como ecodesign, reutilização de resíduos, reciclagem de fibras e uso de biomateriais, com impacto ambiental reduzido, menor consumo de recursos e maior eficiência na gestão de resíduos. O objetivo é permitir uma transição para uma indústria têxtil mais sustentável, competitiva e ambientalmente responsável.</p>
+        <p class="small">Projeto que combina design para desmontagem, recolha seletiva e tecnologias de reciclagem (mecânica e química) com o desenvolvimento e integração de fibras regenerativas. Inclui avaliação de impacto ambiental, proposta económica e um plano faseado para implementação piloto, escala e ligação à regeneração agrícola.</p>
 
         <div style="margin-top:12px" class="metric">
           <div class="num">5 passos</div>
@@ -165,64 +213,90 @@
         <h2>Projeto Proposto</h2>
 
         <h4>Objetivos específicos</h4>
-        <div class="accordion">
-          <div class="card">
-            <button data-target="m1">Proposta de produto têxtil circular (design + materiais).</button>
-            <div id="m1" class="panel"> <p>Este objetivo foca-se na criação de um produto têxtil concebido desde a origem para funcionar num modelo verdadeiramente circular. No contexto do vestuário de proteção contra incêndios, isso implica desenvolver uma peça que combine elevado desempenho técnico com capacidade de recuperação, reciclagem e revalorização no final de vida.</p> <p>A proposta integra:</p> <p>Design modular e para desmontagem (DfD – Design for Disassembly), permitindo que componentes como forros internos, camadas térmicas ou reforços possam ser substituídos, reparados ou reciclados de forma individual.</p> <p>Seleção criteriosa de materiais, privilegiando fibras regenerativas nas camadas não críticas e fibras recicláveis de alto desempenho nas camadas técnicas, garantindo segurança, resistência térmica e durabilidade.</p>
+        <div class="accordion-intro">Clique em cada objetivo para ver a descrição. <span style="color:var(--muted)"> </span></div>
+		
+		
+		<div class="accordion" id="projectAccordion">
+		  <div class="acc-card">
+			<button class="acc-btn" aria-expanded="false" aria-controls="m1" id="btn-m1" data-target="m1">
+				<span class="title">
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2v20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+					<span class="clickable-text">Proposta de produto têxtil circular (design + materiais)</span>
+				</span>
+				<svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+			</button>
+            <div id="m1" class="panel" role="region" aria-labelledby="btn-m1" hidden> 
+			<p>Este objetivo foca-se na criação de um produto têxtil concebido desde a origem para funcionar num modelo verdadeiramente circular. No contexto do vestuário de proteção contra incêndios, isso implica desenvolver uma peça que combine elevado desempenho técnico com capacidade de recuperação, reciclagem e revalorização no final de vida.</p> <p>A proposta integra:</p> <p>Design modular e para desmontagem (DfD – Design for Disassembly), permitindo que componentes como forros internos, camadas térmicas ou reforços possam ser substituídos, reparados ou reciclados de forma individual.</p> <p>Seleção criteriosa de materiais, privilegiando fibras regenerativas nas camadas não críticas e fibras recicláveis de alto desempenho nas camadas técnicas, garantindo segurança, resistência térmica e durabilidade.</p>
 			<p>Integração de sistemas de rastreabilidade (RFID ou etiquetas digitais) que facilitem a identificação de materiais na fase de recolha e reciclagem.</p> <p>Exploração de biomateriais emergentes, como micélio ou celulose bacteriana, para componentes secundários do produto, promovendo baixas emissões e maior biodegradabilidade.</p> <p>Este objetivo resulta numa proposta de produto inovadora, operacional e ambientalmente otimizada, que pode servir de base à futura linha de produção em parceria com a empresa têxtil.</p></div>
-          </div>
-          <div class="card" style="margin-top:8px">
-            <button data-target="m2">Definição de fluxo logístico para recolha e revalorização.</button>
-            <div id="m2" class="panel"><p>A circularidade só é possível com um sistema logístico capaz de recuperar os produtos após o uso, separá-los eficientemente e encaminhá-los para novas etapas de valorização. Este objetivo visa desenhar um fluxo completo, desde o utilizador final até ao reprocessamento industrial.</p>
-			<p>O trabalho inclui:</p> 
-			<ul>
-			<li>Mapeamento dos pontos de recolha (corporações de bombeiros, proteção civil e outras entidades utilizadoras).</li>
-			<li>Definição da logística reversa desde os pontos de recolha até à empresa parceira, garantindo eficiência, rastreabilidade e baixo impacto ambiental.</li>
-			<li>Procedimentos de triagem, incluindo avaliação do estado das peças, separação por tipo de material e identificação das partes passíveis de reutilização, reparação ou reciclagem.</li>
-			<li>Modelos de revalorização, que poderão incluir:</li>
-			<ul>
-				<li>reciclagem mecânica de componentes têxteis;</li>
-				<li>reciclagem química de poliésteres ou poliamidas;</li>
-				<li>reaproveitamento de componentes modulares em novos produtos;</li>
-				<li>integração dos resíduos recuperados na nova linha de produção.</li>
-			</ul>
-			<li>O resultado será um fluxo logístico robusto, eficiente e tecnicamente validado, capaz de suportar a implementação real do sistema circular.</li></div>
-          </div>
-          <div class="card" style="margin-top:8px">
-            <button data-target="m3">Avaliação de impacto ambiental e análise económica com roadmap de implementação.</button>
-            <div id="m3" class="panel"> <p>Este objetivo garante que a solução desenvolvida não é apenas tecnicamente possível, mas também ambientalmente vantajosa e economicamente viável. Através de análises comparativas e métricas de circularidade, é possível estimar o impacto real da transição para o novo modelo.</p>
-			<p>Inclui:</p>
-			<ul>
-				<li>Avaliação ambiental comparando:
+        </div>
+		  
+		<div class="acc-card" style="margin-top:8px">
+			<button class="acc-btn" aria-expanded="false" aria-controls="m2" id="btn-m2" data-target="m2">
+				<span class="title">
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/></svg>
+					<span class="clickable-text">Definição de fluxo logístico para recolha e revalorização</span>
+				</span>
+				<svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+			</button>
+			<div id="m2" class="panel" role="region" aria-labelledby="btn-m2" hidden>
+				<p>A circularidade só é possível com um sistema logístico capaz de recuperar os produtos após o uso, separá-los eficientemente e encaminhá-los para novas etapas de valorização. Este objetivo visa desenhar um fluxo completo, desde o utilizador final até ao reprocessamento industrial.</p>
+				<p>O trabalho inclui:</p> 
 				<ul>
-					<li>modelo linear atual vs. modelo circular proposto;</li>
-					<li>emissões de CO₂;</li>
-					<li>consumo de água e energia;</li>
-					<li>quantidade de resíduos desviados de aterro;</li>
-					<li>durabilidade acrescida do produto final.</li>
-				</ul>
-				</li>
-				<li>Utilização de indicadores como ACV (Análise do Ciclo de Vida) para estimar reduções anuais de impacto.</li>
-				<li>Análise económica, centrada em:
+				<li>Mapeamento dos pontos de recolha (corporações de bombeiros, proteção civil e outras entidades utilizadoras).</li>
+				<li>Definição da logística reversa desde os pontos de recolha até à empresa parceira, garantindo eficiência, rastreabilidade e baixo impacto ambiental.</li>
+				<li>Procedimentos de triagem, incluindo avaliação do estado das peças, separação por tipo de material e identificação das partes passíveis de reutilização, reparação ou reciclagem.</li>
+				<li>Modelos de revalorização, que poderão incluir:</li>
 				<ul>
-					<li>investimento inicial da linha de produção;</li>
-					<li>custos operacionais de recolha e triagem,</li>
-					<li>poupanças derivadas da recuperação de materiais;</li>
-					<li>retorno do investimento (ROI) a médio prazo;</li>
-					<li>modelos de negócio associados (reparação, substituição modular, reprocessamento).</li>
+					<li>reciclagem mecânica de componentes têxteis;</li>
+					<li>reciclagem química de poliésteres ou poliamidas;</li>
+					<li>reaproveitamento de componentes modulares em novos produtos;</li>
+					<li>integração dos resíduos recuperados na nova linha de produção.</li>
 				</ul>
-				</li>
-				<li>Roadmap de implementação, estruturado em fases:
-				<ul>
-					<li>Fase piloto – testes de materiais, protótipos e recolha limitada.</li>
-					<li>Escala industrial – otimização da linha de produção e expansão da recolha.</li>
-					<li>Integração regenerativa – incorporação crescente de fibras regenerativas e biomateriais.</li>
-				</ul>
-				</li>
-			</ul>
-			<p>Este objetivo assegura que a proposta final é sustentada por dados quantitativos e por um plano realista para evolução ao longo dos próximos anos.</p>
+				<li>O resultado será um fluxo logístico robusto, eficiente e tecnicamente validado, capaz de suportar a implementação real do sistema circular.</li></div>
 			</div>
-          </div>
+			
+		<div class="acc-card" style="margin-top:8px">
+			<button class="acc-btn" aria-expanded="false" aria-controls="m3" id="btn-m3" data-target="m3">
+				<span class="title">
+					<svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.4"/></svg>
+					<span class="clickable-text">Avaliação de impacto ambiental e análise económica com roadmap de implementação</span>
+				</span>
+				<svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+			</button>
+			<div id="m3" class="panel" role="region" aria-labelledby="btn-m3" hidden>
+				<p>Este objetivo garante que a solução desenvolvida não é apenas tecnicamente possível, mas também ambientalmente vantajosa e economicamente viável. Através de análises comparativas e métricas de circularidade, é possível estimar o impacto real da transição para o novo modelo.</p>
+				<p>Inclui:</p>
+				<ul>
+					<li>Avaliação ambiental comparando:
+					<ul>
+						<li>modelo linear atual vs. modelo circular proposto;</li>
+						<li>emissões de CO₂;</li>
+						<li>consumo de água e energia;</li>
+						<li>quantidade de resíduos desviados de aterro;</li>
+						<li>durabilidade acrescida do produto final.</li>
+					</ul>
+					</li>
+					<li>Utilização de indicadores como ACV (Análise do Ciclo de Vida) para estimar reduções anuais de impacto.</li>
+					<li>Análise económica, centrada em:
+					<ul>
+						<li>investimento inicial da linha de produção;</li>
+						<li>custos operacionais de recolha e triagem,</li>
+						<li>poupanças derivadas da recuperação de materiais;</li>
+						<li>retorno do investimento (ROI) a médio prazo;</li>
+						<li>modelos de negócio associados (reparação, substituição modular, reprocessamento).</li>
+					</ul>
+					</li>
+					<li>Roadmap de implementação, estruturado em fases:
+					<ul>
+						<li>Fase piloto – testes de materiais, protótipos e recolha limitada.</li>
+						<li>Escala industrial – otimização da linha de produção e expansão da recolha.</li>
+						<li>Integração regenerativa – incorporação crescente de fibras regenerativas e biomateriais.</li>
+					</ul>
+					</li>
+				</ul>
+				<p>Este objetivo assegura que a proposta final é sustentada por dados quantitativos e por um plano realista para evolução ao longo dos próximos anos.</p>
+				</div>
+			</div>
         </div>
 
         <h4 style="margin-top:12px">Soluções propostas</h4>
@@ -375,4 +449,3 @@
   </script>
 </body>
 </html>
-
