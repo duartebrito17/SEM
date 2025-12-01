@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Soluções Circulares & Regenerativas — Projeto</title>
+  <meta name="description" content="Projeto: Soluções baseadas em princípios circulares e regenerativos aplicadas ao setor têxtil." />
+  <style>
+    :root{
+      --accent:#0b6d4d;
+      --muted:#6b7280;
+      --bg:#f7faf9;
+      --card:#ffffff;
+      --glass: rgba(255,255,255,0.7);
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#f0fbf7 0%, var(--bg) 100%);color:#0f172a;line-height:1.45}
+    header{backdrop-filter: blur(6px);position:sticky;top:0;z-index:40;background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));border-bottom:1px solid rgba(15,23,42,0.04)}
+    .nav {max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#0b6d4d,#1fb57a);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+    nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px}
+    .container{max-width:1100px;margin:24px auto;padding:0 18px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:28px 0}
+    .hero .card{background:var(--card);padding:28px;border-radius:12px;box-shadow:0 6px 20px rgba(11,109,77,0.06)}
+    h1{margin:0 0 8px;font-size:28px}
+    p.lead{margin:0;color:var(--muted)}
+    .cta{display:inline-block;margin-top:14px;padding:10px 16px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700}
+
+    /* Sections */
+    section{margin:28px 0}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--card);padding:18px;border-radius:10px;border:1px solid rgba(15,23,42,0.03)}
+    .small{font-size:13px;color:var(--muted)}
+
+    /* Timeline */
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .step{display:flex;gap:12px;align-items:flex-start}
+    .dot{min-width:44px;height:44px;border-radius:10px;background:#fff;border:2px solid rgba(11,109,77,0.12);display:flex;align-items:center;justify-content:center}
+
+    /* Footer */
+    footer{padding:24px 0;color:var(--muted)}
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .grid-3{grid-template-columns:1fr}
+      nav ul{display:none}
+    }
+
+    /* Accordion */
+    .accordion button{width:100%;text-align:left;padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.04);background:transparent;font-weight:700}
+    .panel{padding:12px 0;display:none;color:var(--muted)}
+
+    /* Cards small visuals */
+    .metric{display:flex;flex-direction:column;gap:6px}
+    .metric .num{font-size:20px;font-weight:800;color:var(--accent)}
+  </style>
+</head>
+<body>
+  <header>
+  <div class="nav">
+    <div class="brand" style="align-items:center">
+      <div style="display:flex;gap:8px;align-items:center">
+        <img src="logoUA.webp" alt="Logo 1" style="width:150px;height:auto;border-radius:8px;object-fit:cover;border:2px solid rgba(0,0,0,0.04)" />
+        <img src="Circular_Textil_png.png" alt="Logo 2" style="width:150px;height:65px;border-radius:8px;object-fit:cover;border:2px solid rgba(0,0,0,0.04)" />
+      </div>
+      <div style="margin-left:12px">
+        <div style="font-weight:800">CircularTextil</div>
+        <div style="font-size:12px;color:var(--muted)">Soluções circulares & regenerativas</div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#enquadramento">Enquadramento</a></li>
+        <li><a href="#projeto">Projeto</a></li>
+        <li><a href="#impacto">Impacto</a></li>
+        <li><a href="#equipa">Equipa</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+  <main class="container">
+    <section class="hero">
+      <div class="card">
+        <h1>Soluções circulares e regenerativas no setor têxtil</h1>
+        <p class="lead">Proposta de intervenção que reduz resíduos, recupera materiais e promove fibras regenerativas, com análise de impacto e plano de implementação.</p>
+        <a class="cta" href="#projeto">Ver proposta</a>
+
+        <div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap">
+          <div class="card small" style="display:flex;gap:12px;align-items:center">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><path d="M12 2v4" stroke="#0b6d4d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 18v4" stroke="#0b6d4d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 12h4" stroke="#0b6d4d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 12h4" stroke="#0b6d4d" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><div style="font-weight:700">Ciclo fechado</div><div class="small">Reciclagem e reutilização</div></div>
+          </div>
+
+          <div class="card small" style="display:flex;gap:12px;align-items:center">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#1f9d69" stroke-width="1.6"/></svg>
+            <div><div style="font-weight:700">Fibras regenerativas</div><div class="small">Modal, Refibra, Lyocell, Rayon FR, Bamboo FR</div></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h3 style="margin-top:0">Resumo rápido</h3>
+        <p class="small">Projeto que combina design para desmontagem, recolha seletiva e tecnologias de reciclagem (mecânica e química) com o desenvolvimento e integração de fibras regenerativas. Inclui avaliação de impacto ambiental, proposta económica e um plano faseado para implementação piloto, escala e ligação à regeneração agrícola.</p>
+
+        <div style="margin-top:12px" class="metric">
+          <div class="num">5 passos</div>
+          <div class="small">Design → Uso → Reparação → Reciclagem → Novo Produto</div>
+        </div>
+
+        <div style="margin-top:12px" class="metric">
+          <div class="num">Curto → Longo</div>
+          <div class="small">Implementação faseada em 3 anos</div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="enquadramento">
+      <div class="card">
+        <h2>Enquadramento & Motivação</h2>
+        <p class="small">O setor têxtil segue, em grande medida, um modelo linear — produzir, usar e descartar — que provoca consumo excessivo de água e energia, elevadas emissões de CO₂ e grande produção de resíduos. A transição para princípios circulares e regenerativos é urgente: manter materiais em uso, recuperar valor no fim de vida e restaurar os ecossistemas impactados pelo sistema produtivo. Este projeto procura transformar práticas e cadeias de valor, alinhando inovação tecnológica com benefícios ambientais e sociais.</p>
+
+        <div style="margin-top:12px" class="grid-3">
+          <div class="card">
+            <h4>Problema</h4>
+            <p class="small">O elevado desperdício têxtil, libertação de microfibras, dependência de polímeros fósseis e uso intensivo de recursos hídricos e químicos.</p>
+          </div>
+          <div class="card">
+            <h4>Oportunidade</h4>
+            <p class="small">Modelos de recolha e revalorização, avanços em reciclagem química (p. ex. PET) e biomateriais (micélio, algas, celulose bacteriana) que permitem produtos mais sustentáveis e novas cadeias de fornecimento.</p>
+          </div>
+          <div class="card">
+            <h4>Objetivo</h4>
+            <p class="small">Desenhar soluções técnicas, operacionais e económicas que permitam circularidade real no setor têxtil, com provas de conceito e um roadmap para escalabilidade e impacto regenerativo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="conceitos">
+      <div class="card">
+        <h2>Conceitos-chave</h2>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div>
+            <h4>Economia Circular</h4>
+            <p class="small">Design para desmontagem e estratégias take-back que facilitam reparação, triagem e reciclagem; integração de rastreabilidade digital (RFID/NFC) para gerir fluxo de materiais.</p>
+          </div>
+          <div>
+            <h4>Regeneração</h4>
+            <p class="small">Práticas agrícolas que restauram solos e biodiversidade para produção de fibras (p. ex. cânhamo), e desenvolvimento de biomateriais que reduzem a pegada de carbono e melhoram a biodegradabilidade.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projeto">
+      <div class="card">
+        <h2>Projeto Proposto</h2>
+
+        <h4>Objetivos específicos</h4>
+        <div class="accordion">
+          <div class="card">
+            <button data-target="m1">Proposta de produto têxtil circular (design + materiais).</button>
+            <div id="m1" class="panel"> <p>Este objetivo foca-se na criação de um produto têxtil concebido desde a origem para funcionar num modelo verdadeiramente circular. No contexto do vestuário de proteção contra incêndios, isso implica desenvolver uma peça que combine elevado desempenho técnico com capacidade de recuperação, reciclagem e revalorização no final de vida.</p> <p>A proposta integra:</p> <p>Design modular e para desmontagem (DfD – Design for Disassembly), permitindo que componentes como forros internos, camadas térmicas ou reforços possam ser substituídos, reparados ou reciclados de forma individual.</p> <p>Seleção criteriosa de materiais, privilegiando fibras regenerativas nas camadas não críticas e fibras recicláveis de alto desempenho nas camadas técnicas, garantindo segurança, resistência térmica e durabilidade.</p>
+			<p>Integração de sistemas de rastreabilidade (RFID ou etiquetas digitais) que facilitem a identificação de materiais na fase de recolha e reciclagem.</p> <p>Exploração de biomateriais emergentes, como micélio ou celulose bacteriana, para componentes secundários do produto, promovendo baixas emissões e maior biodegradabilidade.</p> <p>Este objetivo resulta numa proposta de produto inovadora, operacional e ambientalmente otimizada, que pode servir de base à futura linha de produção em parceria com a empresa têxtil.</p></div>
+          </div>
+          <div class="card" style="margin-top:8px">
+            <button data-target="m2">Definição de fluxo logístico para recolha e revalorização.</button>
+            <div id="m2" class="panel"><p>A circularidade só é possível com um sistema logístico capaz de recuperar os produtos após o uso, separá-los eficientemente e encaminhá-los para novas etapas de valorização. Este objetivo visa desenhar um fluxo completo, desde o utilizador final até ao reprocessamento industrial.</p>
+			<p>O trabalho inclui:</p> 
+			<ul>
+			<li>Mapeamento dos pontos de recolha (corporações de bombeiros, proteção civil e outras entidades utilizadoras).</li>
+			<li>Definição da logística reversa desde os pontos de recolha até à empresa parceira, garantindo eficiência, rastreabilidade e baixo impacto ambiental.</li>
+			<li>Procedimentos de triagem, incluindo avaliação do estado das peças, separação por tipo de material e identificação das partes passíveis de reutilização, reparação ou reciclagem.</li>
+			<li>Modelos de revalorização, que poderão incluir:</li>
+			<ul>
+				<li>reciclagem mecânica de componentes têxteis;</li>
+				<li>reciclagem química de poliésteres ou poliamidas;</li>
+				<li>reaproveitamento de componentes modulares em novos produtos;</li>
+				<li>integração dos resíduos recuperados na nova linha de produção.</li>
+			</ul>
+			<li>O resultado será um fluxo logístico robusto, eficiente e tecnicamente validado, capaz de suportar a implementação real do sistema circular.</li></div>
+          </div>
+          <div class="card" style="margin-top:8px">
+            <button data-target="m3">Avaliação de impacto ambiental e análise económica com roadmap de implementação.</button>
+            <div id="m3" class="panel"> <p>Este objetivo garante que a solução desenvolvida não é apenas tecnicamente possível, mas também ambientalmente vantajosa e economicamente viável. Através de análises comparativas e métricas de circularidade, é possível estimar o impacto real da transição para o novo modelo.</p>
+			<p>Inclui:</p>
+			<ul>
+				<li>Avaliação ambiental comparando:
+				<ul>
+					<li>modelo linear atual vs. modelo circular proposto;</li>
+					<li>emissões de CO₂;</li>
+					<li>consumo de água e energia;</li>
+					<li>quantidade de resíduos desviados de aterro;</li>
+					<li>durabilidade acrescida do produto final.</li>
+				</ul>
+				</li>
+				<li>Utilização de indicadores como ACV (Análise do Ciclo de Vida) para estimar reduções anuais de impacto.</li>
+				<li>Análise económica, centrada em:
+				<ul>
+					<li>investimento inicial da linha de produção;</li>
+					<li>custos operacionais de recolha e triagem,</li>
+					<li>poupanças derivadas da recuperação de materiais;</li>
+					<li>retorno do investimento (ROI) a médio prazo;</li>
+					<li>modelos de negócio associados (reparação, substituição modular, reprocessamento).</li>
+				</ul>
+				</li>
+				<li>Roadmap de implementação, estruturado em fases:
+				<ul>
+					<li>Fase piloto – testes de materiais, protótipos e recolha limitada.</li>
+					<li>Escala industrial – otimização da linha de produção e expansão da recolha.</li>
+					<li>Integração regenerativa – incorporação crescente de fibras regenerativas e biomateriais.</li>
+				</ul>
+				</li>
+			</ul>
+			<p>Este objetivo assegura que a proposta final é sustentada por dados quantitativos e por um plano realista para evolução ao longo dos próximos anos.</p>
+			</div>
+          </div>
+        </div>
+
+        <h4 style="margin-top:12px">Soluções propostas</h4>
+        <div class="grid-3">
+          <div class="card">
+            <h5>Produto modular</h5>
+            <p class="small">Peças desenhadas para fácil desmontagem e reparação, permitindo separação de materiais e reciclagem seletiva.</p>
+          </div>
+          <div class="card">
+            <h5>Programa de recolha</h5>
+            <p class="small">Rede de pontos de entrega nas lojas e logística reversa para recolha dos têxteis usados, com triagem e encaminhamento para reciclagem apropriada.</p>
+          </div>
+          <div class="card">
+            <h5>Fibras regenerativas</h5>
+            <p class="small">Integração de cânhamo, algodão regenerado e biomateriais com cadeia de custódia certificada para reduzir dependência de matérias-primas fósseis.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="impacto">
+      <div class="card">
+        <h2>Impacto estimado</h2>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <div class="card" style="flex:1;min-width:220px">
+            <h4>Ambiental</h4>
+            <p class="small">Redução estimada significativa do desperdício têxtil em cenários piloto; poupança de água e emissões através da adoção de fibras regenerativas e reciclagem química.</p>
+          </div>
+          <div class="card" style="flex:1;min-width:220px">
+            <h4>Económico</h4>
+            <p class="small">Modelos de receita baseados em serviços de recolha e reprocessamento; análise de retorno de investimento em 3–5 anos dependendo da escala.</p>
+          </div>
+          <div class="card" style="flex:1;min-width:220px">
+            <h4>Social</h4>
+            <p class="small">Criação de empregos locais na recolha e reprocessamento; formação para operadores e melhoria das condições na cadeia agrícola.</p>
+          </div>
+        </div>
+
+        <h4 style="margin-top:12px">Roadmap de implementação</h4>
+        <div class="timeline small">
+          <div class="step"><div class="dot">1</div><div><b>Fase 1 — Piloto</b><div>Desenvolvimento do produto piloto, implementação de pontos de recolha e testes técnicos.</div></div></div>
+          <div class="step"><div class="dot">2</div><div><b>Fase 2 — Escala</b><div>otimização logística, parcerias com recicladores e aumento da capacidade de tratamento.</div></div></div>
+          <div class="step"><div class="dot">3</div><div><b>Fase 3 — Regeneração</b><div>parcerias agrícolas para produção de fibras regenerativas e certificação da cadeia.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="casos">
+      <div class="card">
+        <h2>Casos de Estudo & Inspirações</h2>
+        <p class="small">Análise comparativa de iniciativas industriais e startups que aplicaram modelos take-back, reciclagem química de poliéster e linhas com fibras regenerativas. Estes exemplos validam a viabilidade das abordagens e revelam boas práticas para implementação e escalabilidade.</p>
+      </div>
+    </section>
+
+    <section id="equipa">
+  <div class="card">
+    <h2>Equipa</h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+      <!-- Member 1 -->
+      <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
+        <img src="images/member1.jpg" alt="Membro 1" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
+        <div>
+          <h4 style="margin:0">David Tavares</h4>
+          <div class="small">107531 — Coordenador</div>
+        </div>
+      </div>
+
+      <!-- Member 2 -->
+      <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
+        <img src="images/member2.jpg" alt="Membro 2" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
+        <div>
+          <h4 style="margin:0">Diogo Costa</h4>
+          <div class="small">108268 — Design de Produto</div>
+        </div>
+      </div>
+
+      <!-- Member 3 -->
+      <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
+        <img src="images/member3.jpg" alt="Membro 3" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
+        <div>
+          <h4 style="margin:0">Duarte Brito</h4>
+          <div class="small">108129 — Análise Económica</div>
+        </div>
+      </div>
+
+      <!-- Member 4 -->
+      <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
+        <img src="images/member4.jpg" alt="Membro 4" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
+        <div>
+          <h4 style="margin:0">Filipe Santos</h4>
+          <div class="small">108054 — Metodologia & Prototipagem</div>
+        </div>
+      </div>
+
+      <!-- Member 5 -->
+      <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
+        <img src="images/member5.jpg" alt="Membro 5" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
+        <div>
+          <h4 style="margin:0">Gonçalo Almeida</h4>
+          <div class="small">108432 — Validação & Comunicação</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <section id="referencias">
+      <div class="card">
+        <h2>Referências</h2>
+        <ol class="small">
+          <li>Artigos científicos e relatórios técnicos (lista completa no relatório).</li>
+          <li>Relatórios de iniciativas industriais e whitepapers.</li>
+        </ol>
+      </div>
+    </section>
+
+    <footer>
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+          <div>
+            <strong>CircularTextil — Projeto UC</strong>
+            <div class="small">Versão protótipo do website — adaptar conteúdo final antes da submissão.</div>
+          </div>
+          <div class="small">© Projeto — Todos os direitos reservados</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Accordion behaviour
+    document.querySelectorAll('.accordion button').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const t = document.getElementById(btn.dataset.target);
+        if(!t) return;
+        const open = t.style.display === 'block';
+        document.querySelectorAll('.panel').forEach(p=>p.style.display='none');
+        t.style.display = open ? 'none' : 'block';
+      })
+    });
+
+    // Smooth scroll for nav anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
+      })
+    });
+  </script>
+</body>
+</html>
