@@ -128,6 +128,14 @@
 	display: block;
 	margin: 0 auto;
 	}
+	
+	.acc-btn .chev {
+    transition: transform 0.25s ease;
+	}
+
+	.acc-btn[aria-expanded="true"] .chev {
+    transform: rotate(90deg);   /* seta para baixo */
+	}
 
   </style>
 </head>
@@ -235,7 +243,7 @@
 
     <section id="projeto">
       <div class="card">
-        <h2>Projeto Proposto</h2>
+        <h2>Projeto</h2>
 
         <h4>Objetivos específicos</h4>
         <div class="accordion-intro">Clique em cada objetivo para ver a descrição. <span style="color:var(--muted)"> </span></div>
@@ -391,7 +399,7 @@
     <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
       <!-- Member 1 -->
       <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
-        <img src="images/member1.jpg" alt="Membro 1" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
+        <img src="David_Tavares.png" alt="Membro 1" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
         <div>
           <h4 style="margin:0">David Tavares</h4>
           <div class="small">107531 — Coordenador</div>
@@ -400,7 +408,7 @@
 
       <!-- Member 2 -->
       <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
-        <img src="images/member2.jpg" alt="Membro 2" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
+        <img src="Diogo_Costa.png" alt="Membro 2" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
         <div>
           <h4 style="margin:0">Diogo Costa</h4>
           <div class="small">108268 — Design de Produto</div>
@@ -409,7 +417,7 @@
 
       <!-- Member 3 -->
       <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
-        <img src="images/member3.jpg" alt="Membro 3" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
+        <img src="Duarte_Brito.jpg" alt="Membro 3" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
         <div>
           <h4 style="margin:0">Duarte Brito</h4>
           <div class="small">108129 — Análise Económica</div>
@@ -418,7 +426,7 @@
 
       <!-- Member 4 -->
       <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
-        <img src="images/member4.jpg" alt="Membro 4" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
+        <img src="Filipe_Santos.jpg" alt="Membro 4" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
         <div>
           <h4 style="margin:0">Filipe Santos</h4>
           <div class="small">108054 — Metodologia & Prototipagem</div>
@@ -427,7 +435,7 @@
 
       <!-- Member 5 -->
       <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
-        <img src="images/member5.jpg" alt="Membro 5" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
+        <img src="Goncalo_Almeida.jpg" alt="Membro 5" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
         <div>
           <h4 style="margin:0">Gonçalo Almeida</h4>
           <div class="small">108432 — Validação & Comunicação</div>
@@ -480,6 +488,17 @@
         if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
       })
     });
+	
+	document.querySelectorAll(".acc-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const panel = document.getElementById(btn.dataset.target);
+        const expanded = btn.getAttribute("aria-expanded") === "true";
+
+        btn.setAttribute("aria-expanded", !expanded);
+        panel.hidden = expanded ? true : false;
+    });
+});
+
   </script>
 </body>
 </html>
