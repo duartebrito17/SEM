@@ -77,7 +77,55 @@
     .hero .card{background:var(--card);padding:28px;border-radius:12px;box-shadow:0 6px 20px rgba(11,109,77,0.06)}
     h1{margin:0 0 8px;font-size:28px}
     p.lead{margin:0;color:var(--muted)}
-    .cta{display:inline-block;margin-top:14px;padding:10px 16px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700}
+    
+	
+	.cta{
+	display: inline-block;
+	margin-top: 30px;
+	padding: 20px 20px;
+	border-radius: 12px;
+	width: 120px;
+    height: 50px;
+
+	background: var(--accent);
+	color: #fff;
+	
+	font-weight: 700;
+	text-decoration: none;
+	letter-spacing: 0.3px;
+	display: inline-flex;       
+    justify-content: center;    
+    align-items: center;        
+	
+	box-shadow: 0 6px 14px rgba(11, 109, 77, 0.12);
+	transform: translateY(0);
+	transition: 
+		transform 0.18s cubic-bezier(.2, .8, .2, 1),
+		box-shadow 0.18s cubic-bezier(.2, .8, .2, 1),
+		opacity 0.18s ease;
+	}
+
+	/* Hover: flutua e destaca-se */
+	.cta:hover{
+	transform: translateY(-4px);
+	box-shadow: 0 10px 28px rgba(11, 109, 77, 0.20);
+	opacity: 0.95;
+	}
+
+	/* Active: sensação de clique real */
+	.cta:active{
+	transform: translateY(-1px);
+	box-shadow: 0 6px 16px rgba(11, 109, 77, 0.18);
+	opacity: 0.88;
+	}
+	
+	
+
+	/* Acessibilidade: foco visível ao navegar com teclado */
+	.cta:focus-visible{
+	outline: 2px solid #fff;
+	outline-offset: 3px;
+	}
 
     /* Sections */
     section{margin:28px 0}
@@ -403,12 +451,142 @@
       </div>
     </section>
 
-    <section id="casos">
-      <div class="card">
-        <h2>Casos de Estudo & Inspirações</h2>
-        <p class="small">Análise comparativa de iniciativas industriais e startups que aplicaram modelos take-back, reciclagem química de poliéster e linhas com fibras regenerativas. Estes exemplos validam a viabilidade das abordagens e revelam boas práticas para implementação e escalabilidade.</p>
+    <section id="casos-inspiracoes" class="cases-section" aria-labelledby="cases-title">
+  <style>
+    :root{
+      --accent: #1f7a6e;
+      --muted: #6b6b6b;
+      --bg: #ffffff;
+      --card-border: rgba(31,122,110,0.12);
+      --radius: 12px;
+      --max-width: 1100px;
+    }
+    .cases-section{ max-width: var(--max-width); margin: 44px auto; padding: 0 18px; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #fff; }
+    .cases-header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px; }
+    .cases-header h2{ margin:0; font-size:1.35rem; letter-spacing: -0.2px; color: black;}
+    .cases-intro{ color:var(--muted); font-size:0.95rem; margin-top:6px; max-width:780px; }
+	
+	.black-title { color: black; }
+	
+    .cases-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:18px; margin-top:18px; }
+    @media (max-width:880px){ .cases-grid{ grid-template-columns: 1fr; } }
+
+    .case-card{
+      background: var(--bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: 0 6px 18px rgba(15,15,15,0.03);
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .case-card:hover{ transform: translateY(-4px); box-shadow: 0 14px 30px rgba(15,15,15,0.06); }
+
+    .case-media{
+      min-width:88px; height:88px; border-radius:8px; background:linear-gradient(135deg, rgba(31,122,110,0.08), rgba(31,122,110,0.02));
+      display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--accent); font-size:0.9rem;
+      flex-shrink:0;
+      overflow:hidden;
+    }
+    .case-body{ flex:1; min-width:0; }
+    .case-title{ margin:0 0 6px 0; font-size:1.02rem; color:black; }
+    .case-excerpt{ margin:0; color:var(--muted); font-size:0.95rem; line-height:1.38; }
+    .case-meta{ margin-top:10px; display:flex; gap:10px; align-items:center; justify-content:space-between; }
+    .tags{ display:flex; gap:8px; flex-wrap:wrap; }
+    .tag{ font-size:0.78rem; color:var(--accent); border:1px solid rgba(31,122,110,0.12); padding:4px 8px; border-radius:999px; background:transparent; }
+    <!--.cta{ font-weight:600; font-size:0.88rem; color:#fff; text-decoration:none; border-bottom:2px solid transparent; padding:4px 2px; }-->
+    <!--.cta:hover{ border-bottom-color:var(--accent); }-->
+  </style>
+
+
+
+
+  <div class="card">
+      <h2 id="cases-title" class="black-title">Casos de Estudo &amp; Inspirações</h2>
+      <p class="cases-intro">Exemplos selecionados que ilustram abordagens técnicas e de design que apoiam a transição para modelos circulares e regenerativos no têxtil.</p>
+    <!--<div style="align-self:flex-end">
+      <a href="#Referencias" class="cta" aria-label="Ver referências completas">Ver referências &rarr;</a>
+    </div>-->
+  
+
+  <div class="cases-grid">
+    <article class="case-card" aria-labelledby="case-pet">
+      <div class="case-media" aria-hidden="true">PET</div>
+      <div class="case-body">
+        <h3 id="case-pet" class="case-title">Reciclagem Química de PET</h3>
+        <p class="case-excerpt">
+          A reciclagem química de poliéster (PET) emergiu como uma solução central para a circularidade têxtil, permitindo decompor fibras sintéticas através de processos como glicólise, metanólise e hidrólise enzimática. Estes métodos recuperam monómeros de elevada pureza, possibilitando a criação de novas fibras sem perda de qualidade. Avanços em enzimas como PETase e cutinase aumentaram a eficiência energética e a viabilidade industrial, contribuindo para reduzir a dependência de matérias-primas virgens e aproximando o setor de um modelo circular regenerativo.
+        </p>
+        <div class="case-meta">
+          <div class="tags">
+            <span class="tag">glicólise</span>
+            <span class="tag">PETase</span>
+            <span class="tag">circularidade</span>
+          </div>
+          <!--<a class="cta" href="#pet-detalhes">Ler mais</a>-->
+        </div>
       </div>
-    </section>
+    </article>
+
+    <article class="case-card" aria-labelledby="case-biomateriais">
+      <div class="case-media" aria-hidden="true">BIO</div>
+      <div class="case-body">
+        <h3 id="case-biomateriais" class="case-title">Biomateriais Regenerativos</h3>
+        <p class="case-excerpt">
+          Materiais de origem biológica, como micélio, algas e celulose bacteriana, estão a ganhar destaque como alternativas sustentáveis ao couro e às fibras sintéticas convencionais. Estes biomateriais oferecem biodegradabilidade, menor pegada de carbono e potencial para regenerar ecossistemas. Apesar dos desafios associados à durabilidade e ao custo de produção, representam uma via promissora para um setor têxtil que busca soluções ambientalmente responsáveis e alinhadas com princípios de circularidade natural.
+        </p>
+        <div class="case-meta">
+          <div class="tags">
+            <span class="tag">micélio</span>
+            <span class="tag">algas</span>
+            <span class="tag">celulose</span>
+          </div>
+          <!--<a class="cta" href="#biomateriais-detalhes">Ler mais</a>-->
+        </div>
+      </div>
+    </article>
+
+    <article class="case-card" aria-labelledby="case-dfd">
+      <div class="case-media" aria-hidden="true">DfD</div>
+      <div class="case-body">
+        <h3 id="case-dfd" class="case-title">Design for Disassembly &amp; Rastreabilidade</h3>
+        <p class="case-excerpt">
+          A inovação têxtil estende-se ao campo do design, onde o Design for Disassembly permite conceber peças facilmente desmontáveis, facilitando a separação de componentes e aumentando a eficiência da reciclagem. Complementarmente, tecnologias de rastreabilidade digital como RFID, NFC e etiquetas inteligentes asseguram o acompanhamento do ciclo de vida dos produtos, permitindo triagem, reutilização e revenda mais eficazes. Este conjunto de estratégias reforça a durabilidade e circularidade dos produtos, promovendo maior transparência e eficiência ao longo da cadeia de valor. 
+        </p>
+        <div class="case-meta">
+          <div class="tags">
+            <span class="tag">DfD</span>
+            <span class="tag">RFID</span>
+            <span class="tag">rastreabilidade</span>
+          </div>
+          <!--<a class="cta" href="#dfd-detalhes">Ler mais</a>-->
+        </div>
+      </div>
+    </article>
+
+    <article class="case-card" aria-labelledby="case-dyeloop">
+      <div class="case-media" aria-hidden="true">Dye</div>
+      <div class="case-body">
+        <h3 id="case-dyeloop" class="case-title">DyeLoop — Recuperação de Corantes</h3>
+        <p class="case-excerpt">
+          O DyeLoop, tecnologia desenvolvida na Universidade de Coimbra, representa um avanço relevante no tingimento sustentável. O sistema separa eficientemente os corantes dos efluentes industriais, permitindo a sua recuperação e reutilização em novos ciclos produtivos, enquanto simultaneamente trata e reintegra a água no processo. Esta abordagem reduz de forma significativa o consumo de água e o impacto ambiental do tingimento, um dos processos mais poluentes da indústria têxtil, tornando-o mais alinhado com princípios circulares e regenerativos.
+        </p>
+        <div class="case-meta">
+          <div class="tags">
+            <span class="tag">DyeLoop</span>
+            <span class="tag">recuperação</span>
+            <span class="tag">água</span>
+          </div>
+          <!--<a class="cta" href="#dyeloop-detalhes">Ler mais</a>-->
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+</section>
+
 
     <section id="equipa">
   <div class="card">
