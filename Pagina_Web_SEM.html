@@ -184,6 +184,53 @@
 	.acc-btn[aria-expanded="true"] .chev {
     transform: rotate(90deg);   /* seta para baixo */
 	}
+	
+	
+	/* Back to top - estilo integrado com o design existente */
+  .back-to-top{
+    position: fixed;
+    right: 20px;
+    bottom: 24px;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent, #0b6d4d);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(11,109,77,0.15);
+    cursor: pointer;
+    z-index: 60;
+    transform: translateY(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .22s ease, transform .22s cubic-bezier(.2,.8,.2,1);
+  }
+
+  .back-to-top:focus{
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(11,109,77,0.12);
+  }
+
+  .back-to-top.show{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  /* estado "pressed" visual */
+  .back-to-top:active{
+    transform: translateY(1px);
+    box-shadow: 0 6px 14px rgba(11,109,77,0.12);
+  }
+
+  /* reduzir movimento para utilizadores que pedem pouca animação */
+  @media (prefers-reduced-motion: reduce){
+    .back-to-top{ transition: none; }
+    html { scroll-behavior: auto; } /* evita smooth se for preferido */
+  }
 
   </style>
 </head>
@@ -632,6 +679,13 @@
         </div>
       </div>
     </footer>
+	
+	<button id="backToTop" class="back-to-top" aria-label="Voltar ao topo" title="Voltar ao topo">
+		<!-- Ícone seta (SVG) -->
+		<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+		<path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+		</svg>
+	</button>
   </main>
 
   <script>
@@ -664,6 +718,54 @@
     });
 });
 
+
+	(function(){
+    const btn = document.getElementById('backToTop');
+    if(!btn) return;
+
+    // Threshold em px para mostrar o botão
+    const showAt = 200;
+
+    // Mostrar/ocultar com scroll, usando rAF para performance
+    let ticking = false;
+    function onScroll(){
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const sc = window.scrollY || document.documentElement.scrollTop;
+          if (sc > showAt) btn.classList.add('show');
+          else btn.classList.remove('show');
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    // também verificar imediatamente (se a página carregar já scrolled)
+    onScroll();
+
+    // Handler de clique: smooth scroll com fallback
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Preferência do utilizador sobre animações
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) {
+        window.scrollTo(0,0);
+      } else {
+        // moderno e suave
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      // foco no topo — útil para leitores de ecrã
+      document.documentElement.focus({preventScroll:true});
+    });
+
+    // suportar Enter/Space para acessibilidade (botões nativamente já respondem, mas por segurança)
+    btn.addEventListener('keydown', (ev) => {
+      if(ev.key === 'Enter' || ev.key === ' '){
+        ev.preventDefault();
+        btn.click();
+      }
+    });
+  })();
   </script>
 </body>
 </html>
