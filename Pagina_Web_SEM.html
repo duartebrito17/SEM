@@ -6,187 +6,477 @@
   <title>Soluções Circulares & Regenerativas — Projeto</title>
   <meta name="description" content="Projeto: Soluções baseadas em princípios circulares e regenerativos aplicadas ao setor têxtil." />
   <style>
-    :root{
-      --accent:#0b6d4d;
-      --muted:#6b7280;
-      --bg:#f7faf9;
-      --card:#ffffff;
-      --glass: rgba(255,255,255,0.7);
-      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,#f0fbf7 0%, var(--bg) 100%);color:#0f172a;line-height:1.45}
-    header{backdrop-filter: blur(6px);position:sticky;top:0;z-index:40;background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));border-bottom:1px solid rgba(15,23,42,0.04)}
-    .nav {max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#0b6d4d,#1fb57a);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
-    nav ul{display:flex;gap:12px;list-style:none;margin:0;padding:0}
-    nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:14px}
-    .container{max-width:1100px;margin:24px auto;padding:0 18px}
-	
-	
-	/* Accordion visual & affordance */
-	.accordion-intro { font-size:13px; color:var(--muted); margin-bottom:8px; }
-	.accordion { display:block; gap:8px; }
-	.accordion .acc-card { background:var(--card); border-radius:8px; padding:0; border:1px solid rgba(0,0,0,0.04); overflow:hidden; }
-	.acc-btn {
-		width:100%;
-		display:flex;
-		align-items:center;
-		justify-content:space-between;
-		padding:14px 16px;
-		font-weight:700;
-		text-align:left;
-		background:transparent;
-		border:none;
-		cursor:pointer;                /* pointy hand */
-		color:var(--accent);          /* clickable color */
-		font-size:15px;
-	}
-	
-	.acc-btn:hover, .acc-btn:focus {
-		background: rgba(11,109,77,0.03);
-		outline: none;
-	}
+  :root{
+    --accent:#0b6d4d;                 /* verde principal */
+    --accent-deep:#064e3b;            /* verde mais escuro para destaques */
+    --accent-soft:#d1fae5;            /* verde muito claro para fundos suaves */
+    --muted:#4b5563;                  /* cinza-esverdeado para texto secundário */
+    --bg:#f2f8f5;                     /* fundo geral esverdeado claro */
+    --card:#ffffff;                   /* fundo base das cards */
+    --glass: rgba(255,255,255,0.82);  /* efeito “glass” mais limpo */
+    font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  }
 
-	.acc-btn .title { display:flex; gap:12px; align-items:center; }
-	.acc-btn .chev { transition: transform .22s ease; display:inline-block; }
-	.acc-btn[aria-expanded="true"] .chev { transform: rotate(90deg); } /* rotate when open */
+  *{box-sizing:border-box}
 
-	.panel {
-		padding:12px 16px 18px 16px;
-		color:var(--muted);
-		line-height:1.45;
-	}
+  body{
+    margin:0;
+    background:linear-gradient(180deg,#e6f7ef 0%, var(--bg) 100%);
+    color:#0f172a;
+    line-height:1.45;
+  }
 
-	/* subtle affordance (underline) for title text */
-	.acc-btn .clickable-text { text-decoration: underline; text-decoration-thickness:1px; text-underline-offset:3px; }
+  header{
+    backdrop-filter: blur(8px);
+    position:sticky;
+    top:0;
+    z-index:40;
+    background:linear-gradient(
+      180deg,
+      rgba(242, 252, 245, 0.96),
+      rgba(255,255,255,0.78)
+    );
+    border-bottom:1px solid rgba(15,23,42,0.06);
+  }
 
-	/* small visual focus */
-	.acc-btn:focus-visible { box-shadow: 0 0 0 4px rgba(11,109,77,0.12); border-radius:8px; }
+  .nav {
+    max-width:1100px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 18px;
+  }
 
-	/* make the icon area separate for clarity on small screens */
-	.acc-btn svg { width:18px; height:18px; flex-shrink:0; }
+  .brand{
+    display:flex;
+    gap:12px;
+    align-items:center;
+  }
 
-	/* optional: limit panel transitions (use max-height for smooth) */
-	.panel[hidden] { display:none; }
-	
-	
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:28px 0}
-    .hero .card{background:var(--card);padding:28px;border-radius:12px;box-shadow:0 6px 20px rgba(11,109,77,0.06)}
-    h1{margin:0 0 8px;font-size:28px}
-    p.lead{margin:0;color:var(--muted)}
-    
-	
-	.cta{
-	display: inline-block;
-	margin-top: 30px;
-	padding: 20px 20px;
-	border-radius: 12px;
-	width: 120px;
+  .logo{
+    width:44px;
+    height:44px;
+    border-radius:10px;
+    background:linear-gradient(135deg,#0b6d4d,#22c55e);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-weight:700;
+    box-shadow:0 6px 16px rgba(11,109,77,0.25);
+  }
+
+  nav ul{
+    display:flex;
+    gap:12px;
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+
+  nav a{
+    color:var(--muted);
+    text-decoration:none;
+    font-weight:600;
+    font-size:14px;
+    padding:6px 10px;
+    border-radius:999px;
+    transition:background .16s ease, color .16s ease;
+  }
+
+  nav a:hover{
+    background:rgba(11,109,77,0.08);
+    color:var(--accent-deep);
+  }
+
+  .container{
+    max-width:1100px;
+    margin:24px auto;
+    padding:0 18px;
+  }
+
+  /* Accordion visual & affordance */
+  .accordion-intro { 
+    font-size:13px; 
+    color:var(--muted); 
+    margin-bottom:8px; 
+  }
+
+  .accordion { 
+    display:block; 
+    gap:8px; 
+  }
+
+  .accordion .acc-card { 
+    background:var(--card); 
+    border-radius:10px; 
+    padding:0; 
+    border:1px solid rgba(11,109,77,0.08); 
+    overflow:hidden;
+    box-shadow:0 4px 14px rgba(15,23,42,0.06);
+  }
+
+  .acc-btn {
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 16px;
+    font-weight:700;
+    text-align:left;
+    background:linear-gradient(135deg,#f7fdf9,#eefaf4);
+    border:none;
+    cursor:pointer;
+    color:var(--accent-deep);
+    font-size:15px;
+  }
+
+  .acc-btn:hover, .acc-btn:focus {
+    background: rgba(11,109,77,0.06);
+    outline: none;
+  }
+
+  .acc-btn .title { 
+    display:flex; 
+    gap:12px; 
+    align-items:center; 
+  }
+
+  .acc-btn .chev { 
+    transition: transform .22s ease; 
+    display:inline-block; 
+  }
+
+  .acc-btn[aria-expanded="true"] .chev { 
+    transform: rotate(90deg); 
+  }
+
+  .panel {
+    padding:12px 16px 18px 16px;
+    color:var(--muted);
+    line-height:1.45;
+    background:#ffffff;
+  }
+
+  .acc-btn .clickable-text { 
+    text-decoration: underline; 
+    text-decoration-thickness:1px; 
+    text-underline-offset:3px; 
+  }
+
+  .acc-btn:focus-visible { 
+    box-shadow: 0 0 0 4px rgba(11,109,77,0.18); 
+    border-radius:8px; 
+  }
+
+  .acc-btn svg { 
+    width:18px; 
+    height:18px; 
+    flex-shrink:0; 
+  }
+
+  .panel[hidden] { 
+    display:none; 
+  }
+
+  .acc-btn .chev {
+    transition: transform 0.25s ease;
+  }
+
+  .acc-btn[aria-expanded="true"] .chev {
+    transform: rotate(90deg);   /* seta para o lado quando aberto */
+  }
+
+  /* Hero */
+  .hero{
+    display:grid;
+    grid-template-columns:1fr 420px;
+    gap:28px;
+    align-items:center;
+    padding:28px 0;
+  }
+
+  .hero .card{
+    background:radial-gradient(circle at top left,#ecfdf5 0,#ffffff 55%);
+    padding:28px;
+    border-radius:16px;
+    box-shadow:0 10px 30px rgba(15,23,42,0.12);
+    border:1px solid rgba(11,109,77,0.12);
+  }
+
+  h1{
+    margin:0 0 8px;
+    font-size:32px;
+    letter-spacing:-0.03em;
+    line-height:1.15;
+    color:#022c22;
+  }
+
+  h2{
+    font-size:22px;
+    margin:0 0 6px;
+    color:#022c22;
+  }
+
+  p.lead{
+    margin:0;
+    color:var(--muted);
+  }
+
+  /* Destaque opcional dentro do hero (usa em HTML se quiseres) */
+  .hero-highlight {
+    border-left: 3px solid var(--accent);
+    padding-left: 10px;
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .cta{
+    display: inline-block;
+    margin-top: 30px;
+    padding: 20px 20px;
+    border-radius: 12px;
+    width: 150px;
     height: 50px;
-
-	background: var(--accent);
-	color: #fff;
-	
-	font-weight: 700;
-	text-decoration: none;
-	letter-spacing: 0.3px;
-	display: inline-flex;       
+    background: linear-gradient(135deg,#0b6d4d,#16a34a);
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    display: inline-flex;       
     justify-content: center;    
     align-items: center;        
-	
-	box-shadow: 0 6px 14px rgba(11, 109, 77, 0.12);
-	transform: translateY(0);
-	transition: 
-		transform 0.18s cubic-bezier(.2, .8, .2, 1),
-		box-shadow 0.18s cubic-bezier(.2, .8, .2, 1),
-		opacity 0.18s ease;
-	}
+    box-shadow: 0 6px 14px rgba(11, 109, 77, 0.25);
+    transform: translateY(0);
+    transition: 
+      transform 0.18s cubic-bezier(.2, .8, .2, 1),
+      box-shadow 0.18s cubic-bezier(.2, .8, .2, 1),
+      opacity 0.18s ease;
+  }
 
-	/* Hover: flutua e destaca-se */
-	.cta:hover{
-	transform: translateY(-4px);
-	box-shadow: 0 10px 28px rgba(11, 109, 77, 0.20);
-	opacity: 0.95;
-	}
+  .cta:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(22, 163, 74, 0.4);
+    opacity: 0.97;
+  }
 
-	/* Active: sensação de clique real */
-	.cta:active{
-	transform: translateY(-1px);
-	box-shadow: 0 6px 16px rgba(11, 109, 77, 0.18);
-	opacity: 0.88;
-	}
-	
-	
+  .cta:active{
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(21,128,61,0.45);
+    opacity: 0.9;
+  }
 
-	/* Acessibilidade: foco visível ao navegar com teclado */
-	.cta:focus-visible{
-	outline: 2px solid #fff;
-	outline-offset: 3px;
-	}
+  .cta:focus-visible{
+    outline: 2px solid #ecfdf5;
+    outline-offset: 3px;
+  }
 
-    /* Sections */
-    section{margin:28px 0}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    .card{background:var(--card);padding:18px;border-radius:10px;border:1px solid rgba(15,23,42,0.03)}
-    .small{font-size:13px;color:var(--muted)}
+  /* Sections base */
+  section{
+    margin:28px 0;
+  }
 
-    /* Timeline */
-    .timeline{display:flex;flex-direction:column;gap:12px}
-    .step{display:flex;gap:12px;align-items:flex-start}
-    .dot{min-width:44px;height:44px;border-radius:10px;background:#fff;border:2px solid rgba(11,109,77,0.12);display:flex;align-items:center;justify-content:center}
+  /* Ritmo visual entre secções – faixas alternadas */
+  section:nth-of-type(even){
+    background:linear-gradient(180deg,#ecfdf5,#f7faf9);
+    padding:36px 0;
+  }
 
-    /* Footer */
-    footer{padding:24px 0;color:var(--muted)}
+  section:nth-of-type(even) .container{
+    padding-top:4px;
+    padding-bottom:4px;
+  }
 
-    /* Responsive */
-    @media(max-width:900px){
-      .hero{grid-template-columns:1fr;}
-      .grid-3{grid-template-columns:1fr}
-      nav ul{display:none}
+  .grid-3{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+  }
+
+  .card{
+    background:var(--card);
+    padding:18px;
+    border-radius:12px;
+    border:1px solid rgba(15,23,42,0.04);
+    box-shadow:0 6px 18px rgba(15,23,42,0.06);
+  }
+
+  .card:hover{
+    box-shadow:0 10px 26px rgba(15,23,42,0.12);
+    border-color:rgba(11,109,77,0.18);
+  }
+
+  /* Card com barra de destaque (aplica class="card with-accent-bar" em HTML se quiseres) */
+  .card.with-accent-bar{
+    position:relative;
+    overflow:hidden;
+  }
+
+  .card.with-accent-bar::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    height:4px;
+    background:linear-gradient(90deg,#0b6d4d,#22c55e);
+  }
+
+  .small{
+    font-size:13px;
+    color:var(--muted);
+  }
+
+  /* “Label” opcional antes de títulos de secção (usa class="section-label") */
+  .section-label{
+    font-size:11px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:4px;
+  }
+
+  /* Badges / chips (para objetivos, tags, etc. – usa class="badge" em HTML) */
+  .badge{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:4px 10px;
+    border-radius:999px;
+    background:rgba(11,109,77,0.06);
+    color:var(--accent-deep);
+    font-size:11px;
+    font-weight:600;
+  }
+
+  /* Timeline */
+  .timeline{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .step{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+
+  .dot{
+    min-width:44px;
+    height:44px;
+    border-radius:12px;
+    background:var(--accent-soft);
+    border:2px solid rgba(11,109,77,0.35);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--accent-deep);
+    font-weight:700;
+  }
+
+  /* Animações suaves para cards (só quando adicionares class="animate" em HTML) */
+  .card.animate{
+    opacity:0;
+    transform:translateY(8px);
+    animation:fadeUp 0.5s ease forwards;
+  }
+
+  .card.animate:nth-of-type(2){ animation-delay:0.05s; }
+  .card.animate:nth-of-type(3){ animation-delay:0.1s; }
+
+  @keyframes fadeUp{
+    to{
+      opacity:1;
+      transform:translateY(0);
     }
+  }
 
-    /* Accordion */
-    .accordion button{width:100%;text-align:left;padding:12px;border-radius:8px;border:1px solid rgba(0,0,0,0.04);background:transparent;font-weight:700}
-    .panel{padding:12px 0;display:none;color:var(--muted)}
+  /* Footer */
+  footer{
+    padding:24px 0;
+    color:var(--muted);
+    border-top:1px solid rgba(15,23,42,0.04);
+  }
 
-    /* Cards small visuals */
-    .metric{display:flex;flex-direction:column;gap:6px}
-    .metric .num{font-size:20px;font-weight:800;color:var(--accent)}
-	
-	.img-problema {
-	width: 200px;
-	height: 250px;
-	display: block;
-	margin: 0 auto;
-	}
+  /* Responsive */
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;}
+    .grid-3{grid-template-columns:1fr}
+    nav ul{display:none}
+  }
 
-	.img-oportunidade {
-	width: 275px;
-	height: 225px;
-	display: block;
-	margin: 0 auto;
-	}
+  @media(max-width:600px){
+    .container{
+      padding:0 14px;
+    }
+    section{
+      margin:22px 0;
+    }
+    .card{
+      padding:16px;
+      border-radius:10px;
+    }
+    h1{
+      font-size:24px;
+    }
+    h2{
+      font-size:19px;
+    }
+  }
 
-	.img-objetivo {
-	width: 300px;
-	height: 230px;
-	display: block;
-	margin: 0 auto;
-	}
-	
-	.acc-btn .chev {
-    transition: transform 0.25s ease;
-	}
+  /* Accordion (fallback genérico já existente) */
+  .accordion button{
+    width:100%;
+    text-align:left;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid rgba(0,0,0,0.04);
+    background:transparent;
+    font-weight:700;
+  }
 
-	.acc-btn[aria-expanded="true"] .chev {
-    transform: rotate(90deg);   /* seta para baixo */
-	}
-	
-	
-	/* Back to top - estilo integrado com o design existente */
+  .panel{
+    padding:12px 0;
+    display:none;
+    color:var(--muted);
+  }
+
+  /* Cards small visuals */
+  .metric{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+  }
+
+  .metric .num{
+    font-size:20px;
+    font-weight:800;
+    color:var(--accent);
+  }
+
+  .img-problema {
+    width: 200px;
+    height: 250px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .img-oportunidade {
+    width: 275px;
+    height: 225px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .img-objetivo {
+    width: 300px;
+    height: 230px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Back to top - estilo integrado com o design existente */
   .back-to-top{
     position: fixed;
     right: 20px;
@@ -200,7 +490,7 @@
     justify-content: center;
     background: var(--accent, #0b6d4d);
     color: #fff;
-    box-shadow: 0 8px 20px rgba(11,109,77,0.15);
+    box-shadow: 0 8px 20px rgba(11,109,77,0.25);
     cursor: pointer;
     z-index: 60;
     transform: translateY(6px);
@@ -211,7 +501,7 @@
 
   .back-to-top:focus{
     outline: none;
-    box-shadow: 0 0 0 4px rgba(11,109,77,0.12);
+    box-shadow: 0 0 0 4px rgba(11,109,77,0.18);
   }
 
   .back-to-top.show{
@@ -220,19 +510,188 @@
     transform: translateY(0);
   }
 
-  /* estado "pressed" visual */
   .back-to-top:active{
     transform: translateY(1px);
-    box-shadow: 0 6px 14px rgba(11,109,77,0.12);
+    box-shadow: 0 6px 14px rgba(11,109,77,0.16);
   }
 
-  /* reduzir movimento para utilizadores que pedem pouca animação */
   @media (prefers-reduced-motion: reduce){
     .back-to-top{ transition: none; }
-    html { scroll-behavior: auto; } /* evita smooth se for preferido */
+    html { scroll-behavior: auto; }
   }
 
-  </style>
+  details {
+    margin-bottom: 12px;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open] summary {
+    margin-bottom: 8px;
+  }
+
+  /* Impact section: chevrons iguais aos do accordion */
+  #impacto details.card {
+    border-radius:8px;
+    padding:10px 12px;
+    border:1px solid rgba(11,109,77,0.08);
+    background:var(--card);
+    margin-bottom:10px;
+    box-shadow:0 4px 14px rgba(15,23,42,0.06);
+  }
+
+  #impacto summary {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    cursor:pointer;
+    font-weight:700;
+    padding:8px 6px;
+    list-style:none;
+    outline:none;
+    color:var(--accent-deep);
+  }
+
+  summary::-webkit-details-marker { display:none; }
+  summary::marker { content: ""; }
+
+  #impacto summary .label { 
+    display:flex; 
+    align-items:center; 
+    gap:8px; 
+    flex:1; 
+  }
+
+  #impacto summary .chev {
+    width:18px;
+    height:18px;
+    flex-shrink:0;
+    transition: transform .22s ease;
+    display:inline-block;
+  }
+
+  #impacto details[open] summary .chev {
+    transform: rotate(90deg);
+  }
+
+  #impacto details .small { 
+    margin: 8px 6px 0 34px; 
+    color:var(--muted); 
+    line-height:1.45; 
+  }
+
+  #impacto summary:focus-visible {
+    box-shadow: 0 0 0 4px rgba(11,109,77,0.18);
+    border-radius:8px;
+  }
+
+  /* --- FLEX/overflow fixes para os itens da equipa --- */
+  #equipa [style*="display:flex"][style*="align-items:center"] {
+    gap: 12px;
+  }
+
+  .member-info {
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: visible;
+  }
+
+  .member-info .small,
+  .member-info p,
+  .member-info div {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+  }
+
+  #equipa img {
+    flex-shrink: 0;
+  }
+
+  .card.wide {
+    max-width: 2000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  
+  /* --- NOVA CLASSE: summary-block --- */
+.summary-block {
+  background: linear-gradient(135deg, #e7f8ef, #ffffff);
+  border: 1px solid rgba(11, 109, 77, 0.18);
+  border-radius: 18px;
+  padding: 24px 26px;
+  box-shadow: 0 8px 26px rgba(11, 109, 77, 0.12);
+  max-width: 520px;
+  margin: 0 auto;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.summary-block:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(11, 109, 77, 0.18);
+}
+
+/* Título */
+.summary-block-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent-deep);
+}
+
+/* Texto */
+.summary-block .small {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+/* Caixa da imagem */
+.summary-block-image-box {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Imagem dos 5 passos */
+.summary-block-image {
+  width: 88%;
+  max-width: 340px;
+  border-radius: 14px;
+  border: 1px solid rgba(11, 109, 77, 0.16);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.08);
+}
+
+/* Animação discreta */
+.summary-block {
+  opacity: 0;
+  animation: summaryFadeUp .6s ease forwards;
+}
+
+@keyframes summaryFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+  
+</style>
 </head>
 <body>
   <header>
@@ -279,26 +738,23 @@
         </div>
       </div>
 
-      <aside class="card">
-        <h3 style="margin-top:0">Resumo rápido</h3>
-        <p class="small">Projeto que combina design para desmontagem, recolha seletiva e tecnologias de reciclagem (mecânica e química) com o desenvolvimento e integração de fibras regenerativas. Inclui avaliação de impacto ambiental, proposta económica e um plano faseado para implementação piloto, escala e ligação à regeneração agrícola.</p>
+      <aside class="summary-block">
+  <h3 class="summary-block-title">Resumo rápido</h3>
 
-        <div style="margin-top:12px" class="metric">
-          <div class="num">5 passos</div>
-          <div class="small">Design → Uso → Reparação → Reciclagem → Novo Produto</div>
-        </div>
+  <p class="small">
+    O projeto explora a aplicação da economia circular no setor têxtil, transformando o modelo linear em um ciclo sustentável. Propõe ecodesign, reutilização de resíduos, reciclagem de fibras e uso de biomateriais, visando reduzir impactos ambientais, otimizar recursos e tornar a indústria têxtil mais sustentável e competitiva.</p>
 
-        <div style="margin-top:12px" class="metric">
-          <div class="num">Curto → Longo</div>
-          <div class="small">Implementação faseada em 3 anos</div>
-        </div>
-      </aside>
+  <div class="summary-block-image-box">
+    <img src="imagem_inicial_sb.png" alt="Ciclo de 5 passos" class="summary-block-image">
+  </div>
+</aside>
     </section>
 
     <section id="enquadramento">
       <div class="card">
         <h2>Enquadramento & Motivação</h2>
-        <p class="small">O setor têxtil segue, em grande medida, um modelo linear — produzir, usar e descartar — que provoca consumo excessivo de água e energia, elevadas emissões de CO₂ e grande produção de resíduos. A transição para princípios circulares e regenerativos é urgente: manter materiais em uso, recuperar valor no fim de vida e restaurar os ecossistemas impactados pelo sistema produtivo. Este projeto procura transformar práticas e cadeias de valor, alinhando inovação tecnológica com benefícios ambientais e sociais.</p>
+        <p class="small">O setor têxtil segue, em grande medida, um modelo linear — produzir, usar e descartar — que provoca consumo excessivo de água e energia, elevadas emissões de CO₂ e grande produção de resíduos. A transição para princípios circulares e regenerativos é urgente: manter materiais em uso, recuperar valor no fim de vida e restaurar os ecossistemas impactados pelo sistema produtivo. Este projeto procura transformar práticas e cadeias de valor, alinhando inovação tecnológica com benefícios ambientais e sociais.
+		</p>
 
         <div style="margin-top:12px" class="grid-3">
           <div class="card">
@@ -432,89 +888,190 @@
       </div>
     </section>
 
-    <section id="impacto">
-      <div class="card">
-        <h2>Impacto estimado</h2>
-        <div style="display:flex;flex-direction:column;gap:12px">
-          <div class="card" style="flex:1;min-width:220px">
-            <h4>
-			<img src="impacto-ambiental.png" style="width:30px;height:30px;margin-right:6px;vertical-align:middle;">
-			Impacto Ambiental
-			</h4>
-            <p class="small">O projeto CircularTextil reduz de forma significativa os resíduos têxteis enviados para aterro ou valorização energética, graças à conceção modular dos produtos e ao programa de recolha, que mantêm os materiais em circulação por mais tempo. Ao prolongar a vida útil dos equipamentos de proteção e permitir substituir apenas os módulos desgastados, diminui-se a necessidade de produzir peças completas e reduz-se a pressão sobre os recursos naturais. O uso de fibras regenerativas retardantes de chama e a reutilização de componentes em bom estado reduzem o consumo de matérias-primas virgens, enquanto a integração em fluxos de reciclagem adequados aumenta a taxa de reciclagem e contribui para uma menor pegada de carbono, aplicando na prática os princípios da economia circular no têxtil técnico.</p>
-          </div>
-          <div class="card" style="flex:1;min-width:220px">
-            <h4>
-			<img src="impacto-economico.png" style="width:30px;height:30px;margin-right:6px;vertical-align:middle;">
-			Impacto Económico
-			</h4>
-            <p class="small">Economicamente, o modelo da CircularTextil reduz os custos ao longo do ciclo de vida dos produtos, uma vez que reparar e substituir módulos é mais económico do que adquirir novos equipamentos completos. Em paralelo, cria-se novo valor através de serviços de reparação e recondicionamento, fornecimento de módulos de substituição e venda de tecidos circulares a outras empresas, num modelo B2B. A menor dependência de matérias-primas virgens e a existência de fluxos de retorno de materiais reforçam a resiliência da cadeia de abastecimento. O carácter inovador e sustentável do projeto facilita ainda o acesso a financiamentos e incentivos ligados à economia circular e estimula a criação de emprego qualificado em logística reversa, análise de ciclo de vida, design circular e operações de reparação e remanufatura têxtil.</p>
-          </div>
-          <div class="card" style="flex:1;min-width:220px">
-            <h4>
-			<img src="impacto-social.png" style="width:30px;height:30px;margin-right:6px;vertical-align:middle;">
-			Impacto Social
-			</h4>
-            <p class="small">Economicamente, o modelo da CircularTextil reduz os custos ao longo do ciclo de vida dos produtos, uma vez que reparar e substituir módulos é mais económico do que adquirir novos equipamentos completos. Em paralelo, cria-se novo valor através de serviços de reparação e recondicionamento, fornecimento de módulos de substituição e venda de tecidos circulares a outras empresas, num modelo B2B. A menor dependência de matérias-primas virgens e a existência de fluxos de retorno de materiais reforçam a resiliência da cadeia de abastecimento. O carácter inovador e sustentável do projeto facilita ainda o acesso a financiamentos e incentivos ligados à economia circular e estimula a criação de emprego qualificado em logística reversa, análise de ciclo de vida, design circular e operações de reparação e remanufatura têxtil.</p>
-          </div>
-        </div>
 
-        <h4 style="margin-top:12px">Roadmap de implementação</h4>
+
+    <section id="impacto">
+  <div class="card">
+    <h2>Impacto estimado</h2>
+	
+	<div class="accordion-intro">Clique em cada objetivo para ver a descrição. <span style="color:var(--muted)"> </span></div>
+
+    <!-- Impacto Ambiental -->
+    <details class="card" aria-labelledby="impacto-ambiental">
+      <summary id="impacto-ambiental" role="button" aria-expanded="false">
+        <span class="label">
+          <img src="impacto-ambiental.png" alt="" style="width:30px;height:30px;margin-right:6px;vertical-align:middle;">
+          <span>Impacto Ambiental</span>
+        </span>
+        <!-- chevron SVG (idêntico ao usado noutros locais) -->
+        <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <p class="small">
+        O projeto CircularTextil reduz de forma significativa os resíduos têxteis enviados para aterro ou valorização energética, graças à conceção modular dos produtos e ao programa de recolha, que mantêm os materiais em circulação por mais tempo. Ao prolongar a vida útil dos equipamentos de proteção e permitir substituir apenas os módulos desgastados, diminui-se a necessidade de produzir peças completas e reduz-se a pressão sobre os recursos naturais. O uso de fibras regenerativas retardantes de chama e a reutilização de componentes em bom estado reduzem o consumo de matérias-primas virgens, enquanto a integração em fluxos de reciclagem adequados aumenta a taxa de reciclagem e contribui para uma menor pegada de carbono, aplicando na prática os princípios da economia circular no têxtil técnico.
+      </p>
+    </details>
+
+    <!-- Impacto Económico -->
+    <details class="card" aria-labelledby="impacto-economico">
+      <summary id="impacto-economico" role="button" aria-expanded="false">
+        <span class="label">
+          <img src="impacto-economico.png" alt="" style="width:30px;height:30px;margin-right:6px;vertical-align:middle;">
+          <span>Impacto Económico</span>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <p class="small">
+        Economicamente, o modelo da CircularTextil reduz os custos ao longo do ciclo de vida dos produtos, uma vez que reparar e substituir módulos é mais económico do que adquirir novos equipamentos completos. Em paralelo, cria-se novo valor através de serviços de reparação e recondicionamento, fornecimento de módulos de substituição e venda de tecidos circulares a outras empresas, num modelo B2B. A menor dependência de matérias-primas virgens e a existência de fluxos de retorno de materiais reforçam a resiliência da cadeia de abastecimento. O carácter inovador e sustentável do projeto facilita ainda o acesso a financiamentos e incentivos ligados à economia circular e estimula a criação de emprego qualificado em logística reversa, análise de ciclo de vida, design circular e operações de reparação e remanufatura têxtil.
+      </p>
+    </details>
+
+    <!-- Impacto Social -->
+    <details class="card" aria-labelledby="impacto-social">
+      <summary id="impacto-social" role="button" aria-expanded="false">
+        <span class="label">
+          <img src="impacto-social.png" alt="" style="width:30px;height:30px;margin-right:6px;vertical-align:middle;">
+          <span>Impacto Social</span>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </summary>
+      <p class="small">
+        No plano social, o projeto melhora a segurança e o conforto dos utilizadores finais, sobretudo equipas que atuam em cenários de incêndio, ao recorrer a têxteis técnicos com melhor desempenho térmico, maior conforto e manutenção das propriedades funcionais ao longo do tempo. O modelo de recolha, reparação e reutilização sensibiliza utilizadores e empresas para um consumo mais responsável, promovendo a devolução e o prolongamento da vida dos produtos. A parceria com o Projeto VAASI e outros atores industriais e académicos fortalece o ecossistema de inovação e a transferência de conhecimento entre setores. Em simultâneo, o projeto contribui para manter e requalificar postos de trabalho na indústria têxtil, orientando competências para atividades de maior valor acrescentado ligadas à circularidade e reforçando a perceção de responsabilidade social e ambiental das organizações envolvidas.
+      </p>
+    </details>
+
+  </div>
+</section>
+
+
+
+        <!--<h4 style="margin-top:12px">Roadmap de implementação</h4>
         <div class="timeline small">
           <div class="step"><div class="dot">1</div><div><b>Fase 1 — Piloto</b><div>Desenvolvimento do produto piloto, implementação de pontos de recolha e testes técnicos.</div></div></div>
           <div class="step"><div class="dot">2</div><div><b>Fase 2 — Escala</b><div>otimização logística, parcerias com recicladores e aumento da capacidade de tratamento.</div></div></div>
           <div class="step"><div class="dot">3</div><div><b>Fase 3 — Regeneração</b><div>parcerias agrícolas para produção de fibras regenerativas e certificação da cadeia.</div></div></div>
         </div>
       </div>
-    </section>
+    </section>-->
 
     <section id="casos-inspiracoes" class="cases-section" aria-labelledby="cases-title">
-  <style>
-    :root{
-      --accent: #1f7a6e;
-      --muted: #6b6b6b;
-      --bg: #ffffff;
-      --card-border: rgba(31,122,110,0.12);
-      --radius: 12px;
-      --max-width: 1100px;
-    }
-    .cases-section{ max-width: var(--max-width); margin: 44px auto; padding: 0 18px; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #fff; }
-    .cases-header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px; }
-    .cases-header h2{ margin:0; font-size:1.35rem; letter-spacing: -0.2px; color: black;}
-    .cases-intro{ color:var(--muted); font-size:0.95rem; margin-top:6px; max-width:780px; }
-	
-	.black-title { color: black; }
-	
-    .cases-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:18px; margin-top:18px; }
-    @media (max-width:880px){ .cases-grid{ grid-template-columns: 1fr; } }
+    <style>
+  :root{
+    --accent: #2e8f6d;        /* Verde principal mais vibrante */
+    --muted: #4f6f62;         /* Verde acinzentado para texto secundário */
+    --bg: #f4fbf7;            /* Fundo ligeiramente esverdeado para suavidade */
+    --card-border: rgba(46,143,109,0.18); /* Borda dos cards em verde translúcido */
+    --radius: 12px;
+    --max-width: 1100px;
+  }
 
-    .case-card{
-      background: var(--bg);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      padding:16px;
-      box-shadow: 0 6px 18px rgba(15,15,15,0.03);
-      display:flex;
-      gap:14px;
-      align-items:flex-start;
-      transition: transform .16s ease, box-shadow .16s ease;
-    }
-    .case-card:hover{ transform: translateY(-4px); box-shadow: 0 14px 30px rgba(15,15,15,0.06); }
+  .cases-section{ 
+    max-width: var(--max-width); 
+    margin: 44px auto; 
+    padding: 0 18px; 
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; 
+    color: #fff; 
+  }
 
-    .case-media{
-      min-width:88px; height:88px; border-radius:8px; background:linear-gradient(135deg, rgba(31,122,110,0.08), rgba(31,122,110,0.02));
-      display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--accent); font-size:0.9rem;
-      flex-shrink:0;
-      overflow:hidden;
-    }
-    .case-body{ flex:1; min-width:0; }
-    .case-title{ margin:0 0 6px 0; font-size:1.02rem; color:black; }
-    .case-excerpt{ margin:0; color:var(--muted); font-size:0.95rem; line-height:1.38; }
-    .case-meta{ margin-top:10px; display:flex; gap:10px; align-items:center; justify-content:space-between; }
-    .tags{ display:flex; gap:8px; flex-wrap:wrap; }
-    .tag{ font-size:0.78rem; color:var(--accent); border:1px solid rgba(31,122,110,0.12); padding:4px 8px; border-radius:999px; background:transparent; }
-    <!--.cta{ font-weight:600; font-size:0.88rem; color:#fff; text-decoration:none; border-bottom:2px solid transparent; padding:4px 2px; }-->
-    <!--.cta:hover{ border-bottom-color:var(--accent); }-->
+  .cases-header{ 
+    display:flex; 
+    align-items:center; 
+    justify-content:space-between; 
+    gap:12px; 
+    margin-bottom:18px; 
+  }
+
+  .cases-header h2{ 
+    margin:0; 
+    font-size:1.35rem; 
+    letter-spacing: -0.2px; 
+    color: black;
+  }
+
+  .cases-intro{ 
+    color:var(--muted); 
+    font-size:0.95rem; 
+    margin-top:6px; 
+    max-width:780px; 
+  }
+
+  .black-title { color: black; }
+
+  .cases-grid{ 
+    display:grid; 
+    grid-template-columns: repeat(2,1fr); 
+    gap:18px; 
+    margin-top:18px; 
+  }
+
+  @media (max-width:880px){ 
+    .cases-grid{ grid-template-columns: 1fr; } 
+  }
+
+  .case-card{
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding:16px;
+    box-shadow: 0 6px 18px rgba(15,15,15,0.03);
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    transition: transform .16s ease, box-shadow .16s ease;
+  }
+
+  .case-card:hover{ 
+    transform: translateY(-4px); 
+    box-shadow: 0 14px 30px rgba(15,15,15,0.09); 
+  }
+
+  .case-media{
+  min-width:88px; 
+  height:88px; 
+  border-radius:8px; 
+  background:#1f5f4a;          /* verde escuro sólido */
+  display:flex; 
+  align-items:center; 
+  justify-content:center; 
+  font-weight:700; 
+  color:#ffffff;               /* texto branco */
+  font-size:0.9rem;
+  flex-shrink:0;
+  overflow:hidden;
+}
+
+  .case-body{ flex:1; min-width:0; }
+
+  .case-title{ 
+    margin:0 0 6px 0; 
+    font-size:1.02rem; 
+    color:black; 
+  }
+
+  .case-excerpt{ 
+    margin:0; 
+    color:var(--muted); 
+    font-size:0.95rem; 
+    line-height:1.38; 
+  }
+
+  .case-meta{ 
+    margin-top:10px; 
+    display:flex; 
+    gap:10px; 
+    align-items:center; 
+    justify-content:space-between; 
+  }
+
+  .tags{ display:flex; gap:8px; flex-wrap:wrap; }
+
+  .tag{ 
+    font-size:0.78rem; 
+    color:var(--accent); 
+    border:1px solid rgba(46,143,109,0.18); 
+    padding:4px 8px; 
+    border-radius:999px; 
+    background:transparent; 
+  }
   </style>
 
 
@@ -606,51 +1163,51 @@
 
 
     <section id="equipa">
-  <div class="card">
+  <div class="card wide">
     <h2>Equipa</h2>
-    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center">
       <!-- Member 1 -->
-      <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
-        <img src="David_Tavares.png" alt="Membro 1" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
-        <div>
-          <h4 style="margin:0">David Tavares</h4>
-          <div class="small">107531 — Coordenador</div>
-        </div>
-      </div>
+      <div style="min-width:250px;flex:1;display:flex;gap:10px;align-items:center">
+			<img src="David_Tavares.png" alt="Membro 1" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
+			<div class="member-info">
+			<h4 style="margin:0">David Tavares</h4>
+			<div class="small">107531 - Coordenador</div>
+			</div>
+		</div>
 
       <!-- Member 2 -->
-      <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
-        <img src="Diogo_Costa.png" alt="Membro 2" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
-        <div>
-          <h4 style="margin:0">Diogo Costa</h4>
-          <div class="small">108268 — Design de Produto</div>
-        </div>
-      </div>
+		<div style="min-width:250px;flex:1;display:flex;gap:10px;align-items:center">
+			<img src="Diogo_Costa.png" alt="Membro 2" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
+			<div class="member-info">
+			<h4 style="margin:0">Diogo Costa</h4>
+			<div class="small">108268 - bernardocosta13@ua.pt</div>
+			</div>
+		</div>
 
       <!-- Member 3 -->
-      <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
-        <img src="Duarte_Brito.jpg" alt="Membro 3" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
-        <div>
-          <h4 style="margin:0">Duarte Brito</h4>
-          <div class="small">108129 — Análise Económica</div>
-        </div>
-      </div>
+      <div style="min-width:250px;flex:1;display:flex;gap:10px;align-items:center">
+			<img src="Duarte_Brito.jpg" alt="Membro 3" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
+			<div class="member-info">
+			<h4 style="margin:0">Duarte Brito</h4>
+			<div class="small">108129 - duarte.brito@ua.pt</div>
+			</div>
+		</div>
 
       <!-- Member 4 -->
-      <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
+      <div style="min-width:250px;flex:1;display:flex;gap:10px;align-items:center">
         <img src="Filipe_Santos.jpg" alt="Membro 4" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
         <div>
           <h4 style="margin:0">Filipe Santos</h4>
-          <div class="small">108054 — Metodologia & Prototipagem</div>
+          <div class="small">108054 - fsantos13@ua.pt</div>
         </div>
       </div>
 
       <!-- Member 5 -->
-      <div style="min-width:160px;flex:1;display:flex;gap:10px;align-items:center">
+      <div style="min-width:250px;flex:1;display:flex;gap:10px;align-items:center">
         <img src="Goncalo_Almeida.jpg" alt="Membro 5" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid rgba(11,109,77,0.12)" />
         <div>
           <h4 style="margin:0">Gonçalo Almeida</h4>
-          <div class="small">108432 — Validação & Comunicação</div>
+          <div class="small">108432 - goncalo.fernandes@ua.pt</div>
         </div>
       </div>
     </div>
@@ -658,7 +1215,7 @@
 </section>
 
 
-    <section id="referencias">
+    <!--<section id="referencias">
       <div class="card">
         <h2>Referências</h2>
         <ol class="small">
@@ -666,16 +1223,16 @@
           <li>Relatórios de iniciativas industriais e whitepapers.</li>
         </ol>
       </div>
-    </section>
+    </section>-->
 
     <footer>
       <div class="card">
         <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
           <div>
-            <strong>CircularTextil — Projeto UC</strong>
-            <div class="small">Versão protótipo do website — adaptar conteúdo final antes da submissão.</div>
+            <strong>CircularTextil — Projeto SEM</strong>
+            <div class="small">Soluções circulares & regenerativas</div>
           </div>
-          <div class="small">© Projeto — Todos os direitos reservados</div>
+          <div class="small">© Seminários em Engenharia Mecânica — 2025</div>
         </div>
       </div>
     </footer>
@@ -766,6 +1323,30 @@
       }
     });
   })();
+  
+  // Sincroniza aria-expanded nos summaries para melhor acessibilidade
+document.querySelectorAll('#impacto details').forEach(dt => {
+  const summary = dt.querySelector('summary');
+  function sync() {
+    const expanded = dt.hasAttribute('open');
+    summary.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+  }
+  // inicializar estado
+  sync();
+  // reagir a aberturas/fechos
+  dt.addEventListener('toggle', sync, {passive:true});
+  // permitir activar com Enter / Space (compatibilidade)
+  summary.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Enter' || ev.key === ' ') {
+      ev.preventDefault();
+      dt.open = !dt.open;
+      sync();
+      summary.focus();
+    }
+  });
+});
+
   </script>
 </body>
 </html>
+
